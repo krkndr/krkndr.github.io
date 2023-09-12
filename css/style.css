@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    padding: 0;
+    
+}
+.blok1 {
+    width: 100%;
+    height: 20%;
+    border: 1px solid black;
+    background-color: #9d4edd;
+    right: 0;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    line-height: 100px;
+    color: white;
+}
+
+.blokX {
+    background-color: white;
+    width: 300px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    font-size: 20px; 
+    font-weight: normal; 
+    text-align: center; 
+    line-height: 10px;
+    color: black; 
+    
+}
+.sidebar {
+    background-color: #ff5d8f;
+    width: 25%;
+    height: 450px;
+    border: 1px solid black;
+    float: left;
+    position: absolute;
+    top: 20%;
+    font-size: 20px; 
+    font-weight: normal;
+    text-align: left; 
+    line-height: 50px; 
+    color: black;
+}
+.menu {
+    text-align: center; 
+    font-weight: bold; 
+    font-size: 24px; 
+}
+.blok3 {
+    width: 75%;
+    height: 10%;
+    border: 1px solid black;
+    background-color: #9ef01a;
+    position: absolute;
+    top: 20%;
+    left: 25%;
+}
+.ts3 {
+    font-size: 16px;
+    padding: 10px;
+}
+.blok4 {
+    width: 50%;
+    height: 50%;
+    border: 1px solid black;
+    background-color: white;
+    position: absolute;
+    left: 25%;   
+    top: 30%;
+}
+.ts4 {
+    font-size: 20px;
+    color: #9ef01a;
+    font-weight: bold;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    text-align: center;
+    margin-top: 100px;
+}
+.blok5 {
+    width: 25%;
+    height: 50%;
+    border: 1px solid black;
+    background-color: #ff5d8f;
+    position: absolute;
+    right: 0;
+    top: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image-size {
+    width: 240px; 
+    height: auto; 
+    }
+.blok6 {
+    width: 100%;
+    height: 20%;
+    border: 1px solid black;
+    background-color: #9d4edd;
+    position: absolute;
+    bottom: 0;
+    
+}
+.blokY {
+    background-color: white; 
+    width: 300px; 
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    left: 85%; 
+    transform: translate(-50%, -50%); 
+    font-size: 20px; 
+    font-weight: normal;
+    text-align: center;
+    line-height: 10px; 
+    color: black; 
+    float: right;
+    
+}
+.ts6 {
+    
+    font-size: 16px;
+    line-height: 1.5;
+    margin-right: 400px;
+    padding: 10px;
+}
