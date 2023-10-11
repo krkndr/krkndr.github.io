@@ -1,0 +1,114 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#blok1 {
+    width: 100%;
+    height: 20%;
+    background-color: #9d4edd;
+}
+
+.header_row1 {
+    height: 10%;
+}
+
+.hed {
+    text-align: center;
+    color: white;
+}
+
+.header_row2 {
+    height: 90%;
+}
+
+.ts1{
+    font-size: 16px;
+    text-align: right;
+    padding: 1%;
+    color: white;
+}
+#blok6 {
+    width: 100%;
+    height: 20%;
+    background-color: #9d4edd;
+}
+.ts6 {
+    font-size: 16px;
+    text-align: left;
+    padding: 1%;
+    align-items: center;
+}
+#main_content {
+    width: 100%;
+    height: 60%;
+}
+.row1 {
+    height: 100px;
+}
+.row2 {
+    height: 400px;
+}
+.blok2 {
+    width: 20%;
+    background-color: #ff5d8f;
+    font-size: 16px;
+    text-align: left;
+    vertical-align: top;
+    padding: 1%;
+}
+.blok3 {
+    width: 80%;
+    background-color: #9ef01a;
+    font-size: 16px;
+    text-align: right;
+    padding: 1%;
+    
+}
+.blok5 {
+    width: 20%;
+    background-color: #ff5d8f;
+}
+
+    .blok5 img {
+        width: 80%;
+        height: auto;
+        display: block; /* Зробити картинку блочним елементом */
+        margin: auto; /* Автоматичний відступ для вирівнювання */
+        vertical-align: middle; /* Вирівнювання посередині */
+    }
+
+
+.blok4 {
+    width: 60%;
+    background-color: white;
+    padding: 1%;
+    font-size: 18px;
+    text-align: left;
+}
+th, td {
+    border: none; 
+}
+
+.blokX {
+    width: 20%;
+    text-align: center; /* вирівнюємо текст по центру по горизонталі */
+    vertical-align: middle; /* вирівнюємо текст по центру по вертикалі */
+}
+
+    .blokX h3 {
+        margin: 0;
+        display: inline-block;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 10px;
+        width: 80%;
+        text-align: left;
+    }
+
