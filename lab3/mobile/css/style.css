@@ -1,0 +1,179 @@
+body {
+    font-family: Arial;
+    margin: 0;
+}
+
+.cont_top {
+    display: flex;
+    flex-direction: row;
+}
+
+.blok1 {
+    display: flex;
+    flex-direction: column;
+    height: 20%;
+    background-color: #9d4edd;
+    align-items: center;
+}
+
+.hed {
+    align-self: center;
+    color: white;
+}
+
+.ts1 {
+    width: 80%;
+    height: auto;
+    font-size: 16px;
+    text-align: right;
+    padding: 1%;
+    color: white;
+}
+
+.blokX {
+    background-color: white;
+    width: 20%;
+    height: auto;
+    align-self: center;
+    margin-left: 3%;
+    padding: 10px;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    width: 20%;
+    padding: 20px;
+    background-color: #ff5d8f;
+}
+
+.main {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+}
+
+.blok4_blok5 {
+    display: flex;
+    flex-direction: row;
+}
+
+.blok3 {
+    background-color: #9ef01a;
+    align-items: center;
+}
+
+.ts3 {
+    padding: 1%;
+    font-size: 16px;
+    text-align: right;
+}
+
+.blok4 {
+    background-color: white;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ts4 {
+    font-size: 18px;
+    text-align: left;
+    padding: 1%;
+}
+
+.blok5 {
+    display: flex;
+    background-color: #ff5d8f;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+
+.image-size {
+    width: 60%;
+    height: auto;
+}
+
+.blok6 {
+    display: flex;
+    flex-direction: row;
+    height: 20%;
+    background-color: #9d4edd;
+    align-items: center;
+}
+
+.blokY {
+    background-color: white;
+    width: 20%;
+    height: auto;
+    align-self: center;
+    margin-right: 3%;
+    padding: 10px;
+}
+
+.ts6 {
+    width: 80%;
+    height: 90%;
+    font-size: 16px;
+    text-align: left;
+    align-items: center;
+    padding: 1%;
+    color: white;
+}
+
+@media screen and (max-width: 900px) {
+    .content {
+        display: flex;
+        flex-direction: column;
+    }
+    .main {
+        width: 100%;
+    }
+    .sidebar {
+        width: calc(100%);
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .cont_top {
+        flex-direction: column;
+    }
+    .blokX{
+        width:70%;
+    }
+    .ts1 {
+        width: 100%;
+        padding: 0;
+        margin-right: 4%;
+    }
+    .blok4_blok5 {
+        display: flex;
+        flex-direction: column;
+    }
+    .blok4 {
+        width: 100%;
+    }
+    .ts4 {
+        font-size: 16px;
+        text-align: left;
+        padding: 1%;
+    }
+    .blok5 {
+        width: 100%;
+    }
+    .blok6 {
+        display: flex;
+        flex-direction: column;
+    }
+    .blokY {
+        width: 70%;
+        margin-bottom: 3%;
+    }
+    
+}
