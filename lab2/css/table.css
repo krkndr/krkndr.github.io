@@ -1,4 +1,4 @@
-﻿body {
+body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -16,23 +16,26 @@ table {
 }
 
 .header_row1 {
-    height: 10%;
+    height: 30%;
+   
 }
 
 .hed {
     text-align: center;
     color: white;
+    padding: 1%;
 }
 
 .header_row2 {
-    height: 90%;
+    height: 70%;
 }
 
-.ts1{
+.ts1 {
     font-size: 16px;
     text-align: right;
     padding: 1%;
     color: white;
+    padding-bottom: 2%;
 }
 #blok6 {
     width: 100%;
@@ -42,7 +45,7 @@ table {
 .ts6 {
     font-size: 16px;
     text-align: left;
-    padding: 1%;
+    padding: 3%;
     align-items: center;
 }
 #main_content {
@@ -79,9 +82,9 @@ table {
     .blok5 img {
         width: 80%;
         height: auto;
-        display: block; /* Зробити картинку блочним елементом */
-        margin: auto; /* Автоматичний відступ для вирівнювання */
-        vertical-align: middle; /* Вирівнювання посередині */
+        display: block; 
+        margin: auto;
+        vertical-align: middle; 
     }
 
 
@@ -97,18 +100,36 @@ th, td {
 }
 
 .blokX {
-    width: 20%;
-    text-align: center; /* вирівнюємо текст по центру по горизонталі */
-    vertical-align: middle; /* вирівнюємо текст по центру по вертикалі */
+    width: 17%;
+    padding-left: 1%;
+    padding-bottom: 3%;
 }
 
     .blokX h3 {
         margin: 0;
-        display: inline-block;
+        vertical-align: middle;
         background-color: #f9f9f9;
         border: 1px solid #ddd;
-        padding: 10px;
-        width: 80%;
         text-align: left;
+        padding: 10%;
+       
+    }
+
+
+.blokY {
+    width: 17%;
+    padding-right: 1%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+
+}
+
+    .blokY h3 {
+        margin: 0;
+        vertical-align: middle;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        text-align: left;
+        padding: 10%;
     }
 
