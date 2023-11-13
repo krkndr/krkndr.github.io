@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="css/JavaScript.js"></script>
+    <title>
+        golovna
+    </title>
+</head>
+
+<body>
+    <div class="blok1">
+        <h2 class="hed"> ГОЛОВНА СТОРІНКА</h2>
+        <div class="cont_top">
+            <div class="blokX">
+                <h3>Слава Україні!</h3>
+            </div>
+            <p class="ts1">
+                Щось дуже важливе. Щось дуже важливе. Щось дуже важливе. Щось дуже важливе. Щось дуже важливе. Щось дуже важливе. Щось дуже важливе. Щось дуже важливе. Щось дуже важливе.
+            </p>
+            <form id="dataForm1" style="display: none;">
+                <label for="dataInput1">Введіть дані:</label>
+                <input type="text" id="dataInput1" name="dataInput1">
+                <button type="button" onclick="saveData(1)">Зберегти</button>
+                <button type="button" onclick="hideForm(1)">Відмінити</button>
+            </form>
+            <img src="images/1.jpg" alt="Зображення" class="image1" onmouseover="showForm(1)">
+        </div>
+    </div>
+    <div class="content">
+        <div class="blok2">
+            <h2>Меню</h2>
+            <ol>
+                <li><a href="index.html">Головна сторінка</a></li>
+            </ol>
+            <img src="images/2.jpg" alt="Зображення" class="image2" onmouseover="showForm(2)">
+            <form id="dataForm2" style="display: none;">
+                <label for="dataInput2">Введіть дані:</label>
+                <input type="text" id="dataInput2" name="dataInput2">
+                <button type="button" onclick="saveData(2)">Зберегти</button>
+                <button type="button" onclick="hideForm(2)">Відмінити</button>
+            </form>            
+        </div>
+        <div class="main">
+            <div class="blok3">
+                <img src="images/3.jpg" alt="Зображення" class="image3" onmouseover="showForm(3)">
+                <form id="dataForm3" style="display: none;">
+                    <label for="dataInput3">Введіть дані:</label>
+                    <input type="text" id="dataInput3" name="dataInput3">
+                    <button type="button" onclick="saveData(3)">Зберегти</button>
+                    <button type="button" onclick="hideForm(3)">Відмінити</button>
+                </form>
+                <p class="ts3">
+                    Щось написано. Щось написано. Щось написано. Щось написано.Щось написано.Щось написано.Щось написано.Щось написано.Щось написано.Щось написано. Щось написано. Щось написано. Щось написано.Щось написано.Щось написано.Щось написано.Щось написано.Щось написано.
+                </p>
+            </div>
+            <div class="blok4_blok5">
+                <div class="blok4">
+                    <p class="ts4" id="resultBlock">
+                        РЕЦЕПТ БОРЩУ (може комусь треба): Спершу варимо бульйон. У каструлю наливаємо 1,5-2 літра води. Додаємо м’ясо й ставимо на середній вогонь. Перед закипанням знімаємо піну. Щойно бульйон закипить, накриваємо кришкою і варимо на повільному вогні годину-півтори. Тим часом готуємо засмажку. Чистимо буряк, моркву та цибулю. Буряк натираємо на крупній тертці, а моркву – на середній. Цибулю нарізаємо кубиками.
+                        На середньому вогні в сковороді розігріваємо олію, висипаємо туди цибулю та моркву, смажимо 5 хвилин. Потім додаємо буряк (його можна посипати лимонною кислотою або збризнути соком свіжого лимона – так борщ буде по-справжньому червоним). Смажимо овочі ще 5 хвилин, додаємо томатну пасту, перемішуємо й смажимо все ще 5-7 хвилин.
+                        А тепер варимо сам борщ. З бульйону виймаємо м’ясо і, поки воно холоне, кидаємо в бульйон нашатковану капусту. Через 5-10 хвилин додаємо нарізану соломкою картоплю. Відокремлюємо м’ясо від кістки й нарізаємо кубиками. Повертаємо м’ясо в борщ, солимо його і додаємо засмажку. Перемішуємо борщ, кладемо лавровий лист і дрібно посічену зелень, накриваємо кришкою та варимо все ще 5-7 хвилин.
+                        Подаємо борщ зі сметаною і зеленню.
+                    </p>
+                    <form id="valuesForm">
+                        <label for="values">Введіть 10 чисел через кому:</label>
+                        <input type="text" id="values" name="values">
+                        <button type="button" onclick="calculateMinMax()">Розрахувати</button>
+                        <button type="button" onclick="clean()">Очистити</button>
+                    </form>
+                    <img src="images/4.jpg" alt="Зображення" class="image4" onmouseover="showForm(4)">
+                    <form id="dataForm4" style="display: none;">
+                        <label for="dataInput4">Введіть дані:</label>
+                        <input type="text" id="dataInput4" name="dataInput4">
+                        <button type="button" onclick="saveData(4)">Зберегти</button>
+                        <button type="button" onclick="hideForm(4)">Відмінити</button>
+                    </form>
+                </div>
+                <div class="blok5">
+                    <img src="images/golovna.jpg" alt="Зображення" class="image5" onmouseover="showForm(5)">
+                    <form id="dataForm5" style="display: none;">
+                        <label for="dataInput5">Введіть дані:</label>
+                        <input type="text" id="dataInput5" name="dataInput5">
+                        <button type="button" onclick="saveData(5)">Зберегти</button>
+                        <button type="button" onclick="hideForm(5)">Відмінити</button>
+                    </form>
+                    <form>
+                        <label for="boldCheckbox">Bold Text:</label>
+                        <input type="checkbox" id="boldCheckbox">
+                    </form>
+                    <p>Текст блоку 5. Текст блоку 5. Текст блоку 5. Текст блоку 5. Текст блоку 5.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="blok6">
+        <p class="ts6">
+            Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.
+            Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.
+            Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.
+            Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.
+            Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.
+            Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.
+        </p>
+        <form id="dataForm6" style="display: none;">
+            <label for="dataInput6">Введіть дані:</label>
+            <input type="text" id="dataInput6" name="dataInput6">
+            <button type="button" onclick="saveData(6)">Зберегти</button>
+            <button type="button" onclick="hideForm(6)">Відмінити</button>
+        </form>
+        <img src="images/5.jpg" alt="Зображення" class="image6" onmouseover="showForm(6)">
+        <div class="blokY">
+            <h3>Героям слава!</h3>
+        </div>
+    </div>   
+</body>
+</html>
