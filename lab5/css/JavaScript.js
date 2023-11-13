@@ -109,7 +109,7 @@ window.onload = function () {
         } else {
             document.cookie = 'min=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
             document.cookie = 'max=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-            location.reload();
+            
         }
     }
     var reloadlocalStorage = confirm('Бажаєте вивести таблиці з localStorage?');
