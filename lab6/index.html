@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab6_page1</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+        }
+
+        .cont_top {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .blok1 {
+            display: flex;
+            flex-direction: column;
+            height: 20%;
+            background-color: #9d4edd;
+            align-items: center;
+        }
+
+        .hed {
+            align-self: center;
+            color: white;
+        }
+
+        .ts1 {
+            width: 80%;
+            height: auto;
+            font-size: 16px;
+            text-align: right;
+            padding: 1%;
+            color: white;
+        }
+
+        .blokX {
+            background-color: white;
+            width: 20%;
+            height: auto;
+            align-self: center;
+            margin-left: 3%;
+            padding: 10px;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .sidebar {
+            width: 20%;
+            padding: 20px;
+            background-color: #ff5d8f;
+        }
+
+        .main {
+            display: flex;
+            width: 80%;
+            flex-direction: column;
+        }
+
+        .blok4_blok5 {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .blok3 {
+            background-color: #9ef01a;
+            align-items: center;
+        }
+
+        .ts3 {
+            padding: 1%;
+            font-size: 16px;
+            text-align: right;
+        }
+
+        .blok4 {
+            background-color: white;
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .blok4 button {
+                background-color: #ff5d8f;
+                color: white;
+                border: 1px solid #ff5d8f;
+                padding: 1%;
+                font-size: 16px;
+                cursor: pointer;
+            }
+
+                .blok4 button:hover {
+                    background-color: white;
+                    color: #ff5d8f;
+                }
+
+        .ts4 {
+            font-size: 18px;
+            text-align: left;
+            padding: 1%;
+        }
+
+        .blok5 {
+            display: flex;
+            background-color: #ff5d8f;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+        }
+
+        .image-size {
+            width: 60%;
+            height: auto;
+        }
+
+        .blok6 {
+            display: flex;
+            flex-direction: row;
+            height: 20%;
+            background-color: #9d4edd;
+            align-items: center;
+        }
+
+        .blokY {
+            background-color: white;
+            width: 20%;
+            height: auto;
+            align-self: center;
+            margin-right: 3%;
+            padding: 10px;
+        }
+
+        .ts6 {
+            width: 80%;
+            height: 90%;
+            font-size: 16px;
+            text-align: left;
+            align-items: center;
+            padding: 1%;
+            color: white;
+        }
+
+        @media screen and (max-width: 900px) {
+            .content {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .main {
+                width: 100%;
+            }
+
+            .sidebar {
+                width: calc(100%);
+                box-sizing: border-box;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            .cont_top {
+                flex-direction: column;
+            }
+
+            .blokX {
+                width: 70%;
+            }
+
+            .ts1 {
+                width: 100%;
+                padding: 0;
+                margin-right: 4%;
+            }
+
+            .blok4_blok5 {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .blok4 {
+                width: 100%;
+            }
+
+            .ts4 {
+                font-size: 16px;
+                text-align: left;
+                padding: 1%;
+            }
+
+            .blok5 {
+                width: 100%;
+            }
+
+            .blok6 {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .blokY {
+                width: 70%;
+                margin-bottom: 3%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="blok1">
+        <h2 class="hed">PAGE 1</h2>
+        <div class="cont_top">
+            <div class="blokX">
+                <h3>Glory to Ukraine!</h3>
+            </div>
+            <p class="ts1">
+                Something very important. Something very important. Something very important. Something very important. Something very important. Something very important. Something very important. Something very important. Something very important.
+            </p>
+        </div>
+    </div>
+    <div class="content">
+        <div class="sidebar">
+            <h2>Menu</h2>
+            <ol>
+                <li><a href="index.html">Page 1</a></li>
+                <li><a href="lab1.php">Page 2</a></li>
+            </ol>
+        </div>
+        <div class="main">
+            <div class="blok3">
+                <p class="ts3">
+                    First, enter the number of photos that will be displayed on page 2, then enter the links to the pictures that will be in the carousel, you can choose from the ones offered below. Click the "Add Photos" button and go to page 2 to view the inserted photos in the carousel.
+                </p>
+            </div>
+            <div class="blok4_blok5">
+                <div class="blok4">
+                        <form id="photoCountForm">
+                            <label for="photoCount">Enter the number of photos (2-10):</label>
+                            <input type="number" id="photoCount" name="photoCount" min="2" max="10" required>
+                            <button type="button" onclick="generatePhotoForms()">Submit</button>
+                        </form>
+                        <div id="photoForms"></div>
+                        <div id="photoCarousel"></div>
+                        <script>
+
+ function generatePhotoForms() {
+ const photoCountInput = document.getElementById("photoCount");
+ const photoCount = parseInt(photoCountInput.value, 10);
+ if (photoCount >= 2 && photoCount <= 10) {
+   createPhotoForms(photoCount);
+ } else {
+   alert("Please enter a valid number between 2 and 10.");
+ }
+}
+function createPhotoForms(count) {
+  const photoFormsContainer = document.getElementById("photoForms");
+  photoFormsContainer.innerHTML = "";
+  for (let i = 0; i < count; i++) {
+    const form = document.createElement("form");
+    form.className = "photoForm";
+    form.innerHTML = `
+      <label for="photoUrl${i + 1}">Enter Photo URL ${i + 1}:</label>
+      <input type="text" id="photoUrl${i + 1}" name="photoUrl${i + 1}" required>`;
+    photoFormsContainer.appendChild(form);
+  }
+  const submitButton = document.createElement("button");
+  submitButton.type = "button";
+  submitButton.textContent = "Add Photos";
+  submitButton.onclick = addPhotos;
+  photoFormsContainer.appendChild(submitButton);
+}
+function addPhotos() {
+    const photoForms = document.querySelectorAll(".photoForm");
+    const photoUrls = [];
+    photoForms.forEach((form, index) => {
+        const photoUrlInput = form.querySelector(`#photoUrl${index + 1}`);
+        const photoUrl = photoUrlInput.value.trim();
+        if (photoUrl !== "") {
+            photoUrls.push(photoUrl);
+        }
+    });
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                console.log(xhr.responseText);
+            } else {
+                console.error("Error saving photos:", xhr.statusText);
+            }
+        }
+    };
+    xhr.open("POST", "lab.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    const data = "photoUrls=" + encodeURIComponent(JSON.stringify(photoUrls));
+    xhr.send(data);
+}
+function displayPhotos(photoUrls) {
+  const photoCarousel = document.getElementById("photoCarousel");
+  photoCarousel.innerHTML = "";
+  photoUrls.forEach(photoUrl => {
+    const img = document.createElement("img");
+    img.src = photoUrl;
+    img.alt = "Photo";
+    photoCarousel.appendChild(img);
+  });
+}
+                        </script>                   
+                </div>
+                <div class="blok5">
+                    <p>
+                        Suggested links to photos that will be displayed in the carousel on the second page:<br><br>
+                        1 -> https://klike.net/uploads/posts/2023-01/1675172293_3-39.jpg<br><br>
+                        2 -> https://klike.net/uploads/posts/2023-02/1675840392_3-484.jpg<br><br>
+                        3 -> https://klike.net/uploads/posts/2023-01/1675149237_3-33.jpg<br><br>
+                        4 -> https://klike.net/uploads/posts/2023-01/1675172335_3-75.jpg<br><br>
+                        5 -> https://klike.net/uploads/posts/2023-02/1675839590_3-196.jpg<br><br>
+                        6 -> https://klike.net/uploads/posts/2019-11/1574513249_45.jpg<br><br>
+                        7 -> https://klike.net/uploads/posts/2023-02/1675839574_3-173.jpg<br><br>
+                        8 -> https://klike.net/uploads/posts/2019-11/1574513164_3.jpg<br><br>
+                        9 -> https://klike.net/uploads/posts/2019-11/1574513129_4.jpg<br><br>
+                        10 -> https://klike.net/uploads/posts/2019-11/1574513233_48.jpg
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="blok6">
+        <p class="ts6">
+            Lots of some text. Lots of some text. Lots of some text. Lots of some text. Lots of some text. Lots of some text. Lots of some text.
+            Lots of some text. Lots of some text. Lots of some text. Lots of some text. Lots of some text. Lots of some text. Lots of some text.
+            Lots of some text. Lots of some text. Lots of some text. Lots of some text. Lots of some text. Lots of some text. Lots of some text.
+            Lots of some text. Lots of some text. Lots of some text. Lots of some text. Lots of some text. Lots of some text. Lots of some text.
+            Lots of some text. Lots of some text. Lots of some text. Lots of some text. Lots of some text. Lots of some text. Lots of some text.
+            Lots of some text. Lots of some text. Lots of some text. Lots of some text. Lots of some text. Lots of some text. Lots of some text.
+        </p>
+        <div class="blokY">
+            <h3>Glory to heroes!</h3>
+        </div>
+    </div>
+</body>
+</html>
