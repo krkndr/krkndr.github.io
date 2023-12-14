@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        lab7
+    </title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+        }
+
+        .cont_top {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .blok1 {
+            display: flex;
+            flex-direction: column;
+            height: 20%;
+            background-color: #9d4edd;
+            align-items: center;
+        }
+
+        .hed {
+            align-self: center;
+            color: white;
+        }
+
+        .ts1 {
+            width: 80%;
+            height: auto;
+            font-size: 16px;
+            text-align: right;
+            padding: 1%;
+            color: white;
+        }
+
+        .blokX {
+            background-color: white;
+            width: 20%;
+            height: auto;
+            align-self: center;
+            margin-left: 3%;
+            padding: 10px;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .sidebar {
+            width: 20%;
+            padding: 20px;
+            background-color: #ff5d8f;
+        }
+
+        .main {
+            display: flex;
+            width: 80%;
+            flex-direction: column;
+        }
+
+        .blok4_blok5 {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .blok3 {
+            background-color: #9ef01a;
+            align-items: center;
+        }
+
+        .ts3 {
+            padding: 1%;
+            font-size: 16px;
+            text-align: right;
+        }
+
+        .blok4 {
+            background-color: white;
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ts4 {
+            font-size: 18px;
+            text-align: left;
+            padding: 1%;
+        }
+
+        .blok5 {
+            display: flex;
+            background-color: #ff5d8f;
+            justify-content: center;
+            align-items: center;
+            width: 30%;
+        }
+
+        .image-size {
+            width: 60%;
+            height: auto;
+        }
+
+        .blok6 {
+            display: flex;
+            flex-direction: row;
+            height: 20%;
+            background-color: #9d4edd;
+            align-items: center;
+        }
+
+        .blokY {
+            background-color: white;
+            width: 20%;
+            height: auto;
+            align-self: center;
+            margin-right: 3%;
+            padding: 10px;
+        }
+
+        .ts6 {
+            width: 80%;
+            height: 90%;
+            font-size: 16px;
+            text-align: left;
+            align-items: center;
+            padding: 1%;
+            color: white;
+        }
+
+        #work {
+            flex-direction: column;
+            display: none;
+            width: 100%; 
+            height: 100%; 
+        }
+        #controls {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+        }
+        #anim {
+            background-image: url('t.png');
+            background-repeat: repeat;
+            border: 5px solid green;
+            overflow: hidden;
+            width: calc(100% - 10px);
+            height: 100%;
+            position: relative; 
+        }
+        #square {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: blue;
+            transition: transform 0.5s ease-in-out;
+        }
+        .information{
+            margin-right: 40%;
+        }
+        .btn-container {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .play-btn, .stop-btn, .reload-btn {    
+            display: none;
+        }
+        .play-btn,
+        .stop-btn,
+        .reload-btn,
+        .close-btn,
+        .show-btn {
+            margin-left: 10px;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .play-btn {
+            background-color: #4caf50; 
+            color: white;
+        }
+
+        .stop-btn {
+            background-color: #f44336; 
+            color: white;
+        }
+
+        .reload-btn {
+            background-color: #2196f3;
+            color: white;
+        }
+        .show-btn {
+            margin-bottom: 1%;
+        }
+
+        .close-btn,
+        .show-btn {
+            background-color: #333;
+            color: white;
+        }
+    </style>
+    <script>
+        function showWork() {
+            fetch('clear.php', {
+                method: 'POST',
+            })
+                .then(response => {
+                    if (response.ok) {
+                        handleSuccess();
+                    } else {
+                        console.error('Помилка очищення файлу');
+                    }
+                })
+                .catch(error => {
+                    console.error('Помилка мережі', error);
+                });
+        }
+
+        function handleSuccess() {
+            logEvent1('PLAY');
+            logEvent2('PLAY');
+            var work = document.querySelector('#work');
+            work.style.display = 'flex';
+            var blok4 = document.querySelector('.blok4');
+            blok4.style.display = 'none';
+            document.getElementById('start').style.display = 'flex';
+            document.getElementById('stop').style.display = 'none';
+            document.getElementById('reload').style.display = 'none';
+            centerSquare();
+        }
+
+        function closeWork() {
+            logEvent1('CLOSE');
+            logEvent2('CLOSE')
+            stopAnimation();
+            var work = document.querySelector('#work');
+            work.style.display = 'none';
+            var blok4 = document.querySelector('.blok4');
+            blok4.style.display = 'flex';
+            document.getElementById('start').style.display = 'none';
+            document.getElementById('stop').style.display = 'none';
+            document.getElementById('reload').style.display = 'none';
+            sendEventsToServer();
+            getEventsContent();           
+        }
+
+        function centerSquare() {
+            var anim = document.getElementById('anim');
+            var square = document.getElementById('square');
+            var animWidth = anim.clientWidth;
+            var animHeight = anim.clientHeight;
+            var squareWidth = square.clientWidth;
+            var squareHeight = square.clientHeight;
+            var centerX = (animWidth - squareWidth) / 2;
+            var centerY = (animHeight - squareHeight) / 2;
+            square.style.transform = 'translate(' + centerX + 'px, ' + centerY + 'px)';
+        }
+
+        function moveSquare(direction, pixels) {
+            var square = document.getElementById('square');
+            var currentX = parseFloat(getComputedStyle(square).left);
+            var currentY = parseFloat(getComputedStyle(square).top);
+            var anim = document.getElementById('anim');
+            var animWidth = anim.clientWidth;
+            var animHeight = anim.clientHeight;
+            var squareWidth = square.clientWidth;
+            var squareHeight = square.clientHeight;
+            switch (direction) {
+                case 'R':
+                    square.style.left = currentX + pixels + 'px';
+                    var informationElement = document.querySelector('.information');
+                    informationElement.textContent = 'Квадратик переміщується вправо на ' + pixels + ' пікселів';
+                    logEvent1('MOVE RIGHT');
+                    logEvent2('MOVE RIGHT');
+                    break;
+                case 'D':
+                    square.style.top = currentY + pixels + 'px';
+                    var informationElement = document.querySelector('.information');
+                    informationElement.textContent = 'Квадратик переміщується вниз на ' + pixels + ' пікселів';
+                    logEvent1('MOVE DOWN');
+                    logEvent2('MOVE DOWN');
+                    break;
+                case 'L':
+                    square.style.left = currentX - pixels + 'px';
+                    var informationElement = document.querySelector('.information');
+                    informationElement.textContent = 'Квадратик переміщується вліво на ' + pixels + ' пікселів';
+                    logEvent1('MOVE LEFT');
+                    logEvent2('MOVE LEFT');
+                    break;
+                case 'U':
+                    square.style.top = currentY - pixels + 'px';
+                    var informationElement = document.querySelector('.information');
+                    informationElement.textContent = 'Квадратик переміщується вверх на ' + pixels + ' пікселів';
+                    logEvent1('MOVE UP');
+                    logEvent2('MOVE UP');
+                    break;
+            }
+            var rect = square.getBoundingClientRect();                 
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            var absoluteY = rect.top + scrollTop;
+            var rect = anim.getBoundingClientRect();       
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;       
+            var absoluteYanim = rect.top + scrollTop;
+            if (absoluteY + squareHeight >= absoluteYanim + animHeight + 5) {         
+                var informationElement = document.querySelector('.information');
+                informationElement.textContent = 'Квадратик доторкнувся до меж поля';
+                logEvent1('APPROACH TO THE BORDER');
+                logEvent2('APPROACH TO THE BORDER');
+                document.getElementById('start').style.display = 'none';
+                document.getElementById('stop').style.display = 'none';
+                document.getElementById('reload').style.display = 'flex';
+            }
+            if (absoluteY + squareHeight > absoluteYanim + animHeight + 20) {               
+                var informationElement = document.querySelector('.information');
+                informationElement.textContent = 'Квадратик повністю за межами поля';
+                logEvent1('FLIGHT ABROAD');
+                logEvent2('FLIGHT ABROAD');
+                stopAnimation()
+            }            
+        }
+        var directionIndex = 0;
+        var directions = ['R', 'D', 'L', 'U'];
+        var pixels = 15;  
+        var animationInterval;
+        function startAnimation() {
+            var informationElement = document.querySelector('.information');
+            informationElement.textContent = 'Анімація починається';
+            logEvent1('START');
+            logEvent2('START');
+            document.getElementById('start').style.display = 'none';
+            document.getElementById('stop').style.display = 'flex';
+            document.getElementById('reload').style.display = 'none';
+            animationInterval = setInterval(function () {
+                moveSquare(directions[directionIndex], pixels);
+                pixels++;
+                directionIndex = (directionIndex + 1) % directions.length;
+            }, 200);  
+        }
+        function stopAnimation() {
+            var informationElement = document.querySelector('.information');
+            informationElement.textContent = 'Анімація зупинена';
+            logEvent1('STOP');
+            logEvent2('STOP')
+            document.getElementById('stop').style.display = 'none';
+            document.getElementById('start').style.display = 'flex';
+            document.getElementById('reload').style.display = 'none';        
+            clearInterval(animationInterval);        
+        }       
+        function reloadAnimation() {
+            stopAnimation();
+            centerSquare()
+            var informationElement = document.querySelector('.information');
+            informationElement.textContent = 'Анімація перезапущена';
+            logEvent1('RELOAD');
+            logEvent2('DELOAD')
+            document.getElementById('start').style.display = 'flex';
+            document.getElementById('stop').style.display = 'none';
+            document.getElementById('reload').style.display = 'none';
+        }
+        var n1 = 1;
+        function logEvent1(message) {
+            var currentTimeInMilliseconds = new Date().getTime();
+            var date = new Date(currentTimeInMilliseconds);
+            var eventData = {
+                eventNumber: n1, 
+                message: message,
+                timestamp: date
+            };
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'save_events_1.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    console.log('Дані успішно відправлені на сервер');
+                } else {
+                    console.error('Сталася помилка при відправці даних на сервер');
+                }
+            };
+            xhr.send(JSON.stringify(eventData));
+            n1++;
+        }
+        var n2 = 1;
+        function logEvent2(message) {
+            var currentTimeInMilliseconds = new Date().getTime();
+            var date = new Date(currentTimeInMilliseconds);
+            var eventData = {
+                eventNumber: n2, 
+                message: message,
+                timestamp: date 
+            };
+            var localStorageKey = 'eventsData';
+            var storedEvents = localStorage.getItem(localStorageKey);
+            var eventsArray = storedEvents ? JSON.parse(storedEvents) : [];
+            eventsArray.push(eventData);
+            localStorage.setItem(localStorageKey, JSON.stringify(eventsArray));
+            n2++;
+        }
+
+        function sendEventsToServer() {
+            var localStorageKey = 'eventsData';
+            var storedEvents = localStorage.getItem(localStorageKey);
+            var eventsArray = storedEvents ? JSON.parse(storedEvents) : [];
+            fetch('save_events_2.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ events: eventsArray })
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Дані успішно відправлені на сервер');
+                        localStorage.removeItem(localStorageKey);
+                    } else {
+                        console.error('Сталася помилка при відправці даних на сервер');
+                    }
+                })
+                .catch(error => {
+                    console.error('Помилка мережі', error);
+                });
+        }
+
+        function getEventsContent() {
+            fetch('events.txt')
+                .then(response => response.text())
+                .then(data => {
+                    const eventsArray1 = data.split('\n');
+                   
+                    fetch('events2.txt')
+                        .then(response => response.text())
+                        .then(data => {
+                            const eventsArray2 = data.split('\n');
+                            
+                            createTable(eventsArray1, eventsArray2);
+                        })
+                        .catch(error => console.error('Помилка отримання вмісту файлу events2.txt:', error));
+                })
+                .catch(error => console.error('Помилка отримання вмісту файлу events.txt:', error));                  
+        }
+
+        function createTable(eventsArray1, eventsArray2) {
+            const blok4 = document.querySelector('.blok4');
+            const table = document.createElement('table');
+            table.border = '1';
+            const headerRow = table.insertRow();
+            const headerCell1 = headerRow.insertCell(0);
+            const headerCell2 = headerRow.insertCell(1);
+            headerCell1.innerHTML = '<b>Збережені події першим способом</b>';
+            headerCell2.innerHTML = '<b>Збережені події другим способом</b>';
+            const maxLength = Math.max(eventsArray1.length, eventsArray2.length);
+            for (let i = 0; i < maxLength; i++) {
+                const row = table.insertRow();
+                const cell1 = row.insertCell(0);
+                if (i < eventsArray1.length) {
+                    cell1.textContent = eventsArray1[i];
+                }
+                const cell2 = row.insertCell(1);
+                if (i < eventsArray2.length) {
+                    cell2.textContent = eventsArray2[i];
+                }
+            }
+            blok4.appendChild(table);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="blok1">
+        <h2 class="hed"> ГОЛОВНА СТОРІНКА</h2>
+        <div class="cont_top">
+            <div class="blokX">
+                <h3>Слава Україні!</h3>
+            </div>
+            <p class="ts1">
+                Щось дуже важливе. Щось дуже важливе. Щось дуже важливе. Щось дуже важливе. Щось дуже важливе. Щось дуже важливе. Щось дуже важливе. Щось дуже важливе. Щось дуже важливе.
+            </p>
+        </div>
+    </div>
+    <div class="content">
+        <div class="sidebar">
+            <h2>Меню</h2>
+            <ol>
+                <li><a href="index.html">Головна сторінка</a></li>
+            </ol>
+        </div>
+
+        <div class="main">
+            <div class="blok3">
+                <p class="ts3">
+                    Щось написано. Щось написано. Щось написано. Щось написано.Щось написано.Щось написано.Щось написано.Щось написано.Щось написано.Щось написано. Щось написано. Щось написано. Щось написано.Щось написано.Щось написано.Щось написано.Щось написано.Щось написано.
+                </p>
+            </div>
+            <div class="blok4_blok5">
+                <div class="blok4">
+                    <p class="ts4">
+                       
+                    </p>
+                    <button class="show-btn" onclick="showWork()">Play</button>
+                </div>
+                <div id="work">
+                    <div id="controls">
+                        <p class="information"></p>
+                        <div class="btn-container">
+                            <button id="start" class="play-btn" onclick="startAnimation()">Start</button>
+                            <button id="stop" class="stop-btn" style="display:none;" onclick="stopAnimation()">Stop</button>
+                            <button id="reload" class="reload-btn" style="display:none;" onclick="reloadAnimation()">Reload</button>
+                        </div>
+                        <button class="close-btn" onclick="closeWork()">Close</button>
+                        <button id="reload1" style="display:none;" onclick="reloadAnimation()">Reload</button>
+                    </div>
+                    <div id="anim">
+                        <div id="square"></div>
+                    </div>                   
+                </div>
+                <div class="blok5">
+                    <img src=https://i.pinimg.com/236x/77/91/63/77916357fc63f0a10b23dad3a4e0529f.jpg alt="Зображення" class="image-size">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="blok6">
+        <p class="ts6">
+            Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.
+            Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.
+            Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.
+            Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.
+            Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.
+            Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.Багато якогось тексту.
+        </p>
+        <div class="blokY">
+            <h3>Героям слава!</h3>
+        </div>
+    </div>
+</body>
+</html>
+
+
